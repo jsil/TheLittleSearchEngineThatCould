@@ -8,6 +8,8 @@
 #include "Driver.h"
 
 Driver::Driver() {
+    IH = new IndexHandler();
+            
 }
 
 Driver::Driver(const Driver& orig) {
@@ -21,14 +23,18 @@ void Driver::parseInput(){
 void Driver::searchFor(){
 }
 
-void Driver::interactive(){
-    cout << " we get this far"<< endl;
+void Driver::interactive(int status){
+    bool control = true;
+    if(status == 0){
+        IH->readIndataset()
+    }
+    
     
 }
-void Driver::stressTest(){
+void Driver::stressTest(char* filename){
     
 }
-void Driver::maintenance(){
+void Driver::maintenance(char* filename){
     
 }
 

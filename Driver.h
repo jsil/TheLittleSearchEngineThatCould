@@ -26,13 +26,16 @@ public:
     void parseInput();
     void searchFor();
     
-    void interactive();
-    void stressTest();
-    void maintenance();
+    void interactive(int);
+    void stressTest(char*);
+    void maintenance(char*);
     
     
     
 private:
+    QueryProcessor * QP;
+    DocumentParser * DP;
+    IndexHandler * IH;
 
 };
 

@@ -7,34 +7,45 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include "Driver.h"
+#include <cstring>
 
 using namespace std;
 
 /*
  * 
  */
-int main(int argc, char** argv) {
+int main(int argc, char* argv[]) {
     bool fail = false;
-    cout << argv[1]<< endl;
-    if(argv[1] == "-IM")
-        cout<< "ding" << endl;
-    
+
     Driver driver;
-  
-    driver.interactive();
-  
 
 
-    if (fail == true) {
-        cout << "Invalid command line argument, please try again" << endl;
-        cout << "./a.out <mode> <filepath>" << endl;
-        cout << "\tmode-" << endl;
-        cout << "\t\t-IM interactive mode, regular searching of data base" << endl;
-        cout << "\t\t-MM maintenance  mode, allows the user to expand or erase the corpus of documents" << endl;
-        cout << "\t\t-ST stress Test (requires file path to properly formated command file)" << endl;
-        exit(EXIT_FAILURE);
+    if (argc == 3) {
+
+        if (argv[1] == std::string("-IM")) {
+            if (argv[2] == std::string("-A")) {
+                //cout << "ring-a-ding" << endl;
+                driver.interactive(0);
+            } else if (argv[2] == std::string("-H")) {
+                driver.interactive(1);
+            } else {
+                fail = true;
+            }
+        } else if (argv[1] == std::string("-MM")) {
+            driver.maintenance(argv[2]);
+        } else if (argv[1] == std::string("-SM")){
+            driver.stressTest(argv[2]);
+        } else {
+            fail = true;
+        }
+
+    }else {                         
+        fail = true;
     }
+
+
 
     return 0;
 }
